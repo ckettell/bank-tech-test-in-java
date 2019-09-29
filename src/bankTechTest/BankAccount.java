@@ -1,15 +1,51 @@
 package bankTechTest;
 
+import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.text.Format;
+import java.util.Date;
+
+
 public class BankAccount {
 	
-	public double balance = 0; 
+	public ArrayList transactions = new ArrayList<>();
+	
+	public int balance = 0; 
 	
 	BankAccount(){
 		
 	}
 
-	public double deposit(double amount) {
-		return this.balance = 10;
+	public void deposit(int amount) {
+		Date date = new Date(); 
+		Format formatDate = new SimpleDateFormat("yyyy.MM.dd");
+		String strDate = formatDate.format(date);
+		this.balance += amount;
+		transactions.add(strDate + " || " + String.valueOf(amount) + " || " + "0" + " || " + String.valueOf(this.balance));	
+		
 	}
+	
+	public int withdraw(int amount) {
+		return this.balance -= amount; 
+		
+	}
+	
+	public String printBalance() {
+		String result = "Date || Credit || Debit || Balance";
+		
+		for (int i = this.transactions.size(); i >= 0; i--) {
+			result += this.transactions.get(i);
+			
+		}
+		
+		return result;
+	}
+	
+	  public static void main(){
+		  BankAccount bank = new BankAccount();
+		  bank.deposit(10);
+		  bank.printBalance();
+		    
+	  }
 
 }
