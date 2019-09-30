@@ -21,7 +21,7 @@ public class BankAccount {
 		Format formatDate = new SimpleDateFormat("yyyy.MM.dd");
 		String strDate = formatDate.format(date);
 		this.balance += amount;
-		transactions.add(strDate + " || " + String.valueOf(amount) + " || " + "0" + " || " + String.valueOf(this.balance));	
+		transactions.add("\n" + strDate + " || " + String.valueOf(amount) + " || " + "0" + " || " + String.valueOf(this.balance));	
 		
 	}
 	
@@ -31,13 +31,14 @@ public class BankAccount {
 	}
 	
 	public String printBalance() {
-		String result = "Date || Credit || Debit || Balance";
+		String result = "Date || Credit || Debit || Balance ";
 		
-		for (int i = this.transactions.size(); i >= 0; i--) {
+		for (int i = this.transactions.size() - 1; i >= 0; i--) {
+			System.out.println(i);
 			result += this.transactions.get(i);
 			
 		}
-		
+		System.out.println(result);
 		return result;
 	}
 	
