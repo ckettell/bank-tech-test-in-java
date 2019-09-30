@@ -40,22 +40,24 @@ class BankAccountTest {
 	@Test
 	void recordsTimeWhenUserMakersADeposit() {
 		BankAccount account = new BankAccount();
+		StatementPrinter printer = new StatementPrinter();
 		account.deposit(10);
 		Date date = Calendar.getInstance().getTime();  
 		DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");  
 		String strDate = dateFormat.format(date);  
-		assertThat(account.printBalance(), containsString(strDate));
+		assertThat(printer.printBalance(account), containsString(strDate));
 								
 	}
 	
 	@Test
 	void recordsTimeWhenUserMakesAWithdrawal() {
 		BankAccount account = new BankAccount();
+		StatementPrinter printer = new StatementPrinter();
 		account.withdraw(20);
 		Date date = Calendar.getInstance().getTime();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 		String strDate = dateFormat.format(date);
-		assertThat(account.printBalance(), containsString(strDate));
+		assertThat(printer.printBalance(account), containsString(strDate));
 		
 	}
 
