@@ -47,5 +47,16 @@ class BankAccountTest {
 		assertThat(account.printBalance(), containsString(strDate));
 								
 	}
+	
+	@Test
+	void recordsTimeWhenUserMakesAWithdrawal() {
+		BankAccount account = new BankAccount();
+		account.withdraw(20);
+		Date date = Calendar.getInstance().getTime();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+		String strDate = dateFormat.format(date);
+		assertThat(account.printBalance(), containsString(strDate));
+		
+	}
 
 }

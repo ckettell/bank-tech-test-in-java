@@ -25,8 +25,12 @@ public class BankAccount {
 		
 	}
 	
-	public int withdraw(int amount) {
-		return this.balance -= amount; 
+	public void withdraw(int amount) {
+		Date date = new Date();
+		Format formatDate = new SimpleDateFormat("yyyy.MM.dd");
+		String strDate = formatDate.format(date);
+		this.balance -= amount;
+		transactions.add("\n" + strDate + " || " + "0" + " || " + String.valueOf(amount) + " || " + String.valueOf(this.balance));	 
 		
 	}
 	
